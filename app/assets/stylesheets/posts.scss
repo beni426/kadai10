@@ -1,0 +1,12 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.post-form-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding-bottom: 10px;
+    background-color: rgb(255,255,255);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgb(231, 243, 242);
+  }

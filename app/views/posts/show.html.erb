@@ -1,0 +1,13 @@
+  <% unless @picture.user_id == current_user.id %>
+   
+     <% if @favorite.present? %>
+     <%= button_to  favorite_path(id: @favorite.id), method: :delete, class: 'favorite-button unfavorite' do %>
+     <%= fa_icon('thumbs-up', type: :regular, text: "favorite") %>
+    <% end %>
+    <% else %>
+      <%= button_to  favorites_path(favorite: {picture_id: @picture.id} ), method: :post, class: "favorite-button" do %>
+      <%= fa_icon('thumbs-up', type: :solid, text: "favorite") %>
+    <% end %>
+    <% end %>
+       <button class="comment-button"><i class="far fa-comment-alt"></i> Comment</button>
+       <%= link_to "もどる", pictures_path %>

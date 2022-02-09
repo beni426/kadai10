@@ -1,0 +1,20 @@
+<% provide(:title, "投稿確認") %>
+<div class="post-form-wrapper">
+  <%= form_with(model: @post, local: true) do |form| %>
+    <div class="post-form-header">
+      <ul>
+        <li><%= form.submit "戻る", class: "btn-original btn-green", name: "back" %></li>
+        <li><span class="form-title">新規投稿を確認</span></li>
+        <li><%= form.submit "投稿", class: "btn-original btn-skyblue" %></li>
+      </ul>
+    </div>
+    <%= form.label :content, class: "sr-only" %>
+    <%= form.text_area :content, class: "form-control", placeholder: "キャプションを入力...", readonly: true %>
+    <%= form.label :image, class: "sr-only" %>
+    <%= form.hidden_field :image, class: "form-control" %>
+    <%= form.hidden_field :image_cache %>
+    <div class="post-image-box">
+      <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %>
+    </div>
+  <% end %>
+</div>
