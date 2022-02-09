@@ -3,7 +3,7 @@ class ContactMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: "アカウント登録通知:"
   end
-  def notify(user)
+  def anounce(user)
     @user = user
     mail to: @user.email, subject: "投稿通知: "
   end

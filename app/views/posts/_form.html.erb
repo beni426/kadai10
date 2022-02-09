@@ -1,0 +1,29 @@
+<div class="post-form-wrapper">
+ <%= form_with(model: @post, url: choose_new_or_edit, local: true) do |form| %>
+   <% if @posts.errors.any? %>
+      <div class="alert alert-danger alert-login">
+        <h2><%= pluralize(post.errors.count, "error", locale: :en)  %>  from being saved:</h2>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg%></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %> 
+        <div class="picture-form-header">
+      <ul>
+        <li></li>
+        <li><span class="form-title"><%= form_title %></span></li>
+        <li><%= form.submit "投稿", class: "btn-original btn-skyblue", id: "posts-btn" %></li>
+      </ul>
+    </div>
+    <%= form.label :content, class: "sr-only" %>
+    <%= form.text_area :content, class: "form-control", placeholder: "キャプションを入力..." %>
+    <%= form.label :image, class: "sr-only" %>
+    <%= form.file_field :image, class: "form-control", accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+    <%= form.hidden_field :image_cache %>
+    <div class="picture-image-box">
+      <%= image_tag(picture.image.url, class: "form-picture-image") if picture.image && picture.image.url %>
+    </div>
+  <% end %>
+</div>

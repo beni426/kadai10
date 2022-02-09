@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
-        # ContactMailer.notify_posting(@post.user).deliver
+        ContactMailer.anounce(@post.user).deliver
         redirect_to @post, notice: "写真を投稿しました!"
       else
         render :new

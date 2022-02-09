@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      # ContactMailer.contact_mail(@user).deliver
+      ContactMailer.contact_mail(@user).deliver
       redirect_to @user, notice: "アカウント作成しました!"
     else
       render :new
