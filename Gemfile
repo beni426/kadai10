@@ -14,6 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'psych', '~> 3.1'
 gem 'rexml'
 gem "net-smtp"
+gem 'faker'
 
 
 
