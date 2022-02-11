@@ -1,26 +1,39 @@
-<h1>Sign up</h1>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+
+<% provide(:title, "ログイン") %>
+
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger alert-login">
+     <h3><%= pluralize(@user.errors.count, "error", locale: :en)  %> prohibited this <%= @user.name %> from being saved:</h3>
+     <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg%></li>
+       <% end %>
     </ul>
-  </div>
+   </div>
+   <% end %>
+    <%= form_with(model: @user, local: true, class: "login-form") do |form| %>
+    <h1>Sign up</h1>
+    <%= image_tag(@user.image.url, class: "user-image") if @user.image && @user.image.url %>
 
-<%= form_with(model: @user, local: true) do |f| %>  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <%= form.label :name, class: "sr" %>
+    <%= form.text_field :name, class: "form-operation judge-active", placeholder: 'your name', required: true %>
+    <%= form.label :email, class: "sr" %>
+   <%= form.email_field :email, class: "form-operation judge-active", placeholder: 'your email', required: true, autofocus: true %>
+     <%= form.label :image, class: "sr" %>
+    <%= form.file_field :image, class: "form-operation", accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.label :password, class: "sr" %>
+    <%= form.password_field :password, class: "form-operation judge-active", placeholder: 'your password', required: true, minlength: 6 %>
+    <%= form.label :password, class: "sr" %>
+    <%= form.password_field :password_confirmation, class: "form-operation judge-active", placeholder: 'your password confirmation', required: true %>
+    <%= form.submit "登録する", class: "btn btn-primary", id: "active-btn" %>
+     <p><%=link_to "ログインする", new_session_path %></p>
+  <% end %>
+  <div class="enter-login-wrapper">
+ 
+</div>
+</div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Create my account" %>
-<% end %>
 

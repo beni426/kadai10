@@ -1,10 +1,19 @@
-<div class="login-form-wrapper">
+<div class="registrations-new">
   <div class="login-form-header">
     <h1 class="login-form-title">photo_connections</h1>
   </div>
   <%= form_with(model: user, local: true, class: "login-form") do |form| %>
-    <%# <%= render partial: "error_messages", locals: {user: user} %> %>
-    <h2 class="login-form-subtitle">登録して友達の写真や動画をチェックしよう</h2>
+      <% if user.errors.any? %>
+    <div class="alert alert-danger alert-login">
+     <h3><%= pluralize(user.errors.count, "error", locale: :en)  %> prohibited this <%= user.name %> from being saved:</h3>
+     <ul>
+      <% user.errors.full_messages.each do |msg| %>
+        <li><%= msg%></li>
+       <% end %>
+    </ul>
+   </div>
+   <% end %>
+    <h2>登録した写真や動画をチェック</h2>
     <%= image_tag(user.image.url, class: "form-user-image") if user.image && user.image.url %>
     <%= form.label :email, class: "sr-only" %>
     <%= form.email_field :email, class: "form-control judge-active", placeholder: t("views.users.email"), required: true, autofocus: true %>
@@ -18,6 +27,5 @@
     <%= form.label :password, class: "sr-only" %>
     <%= form.password_field :password_confirmation, class: "form-control judge-active", placeholder: t("views.users.password_confirmation"), required: true %>
     <%= form.submit "登録する", class: "btn btn-primary", id: "active-btn" %>
-    <p class="explanation-rule">登録することで、本規約、データに関するポリシー、Cookieポリシーに同意するものとします。</p>
   <% end %>
 </div>

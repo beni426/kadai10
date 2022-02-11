@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: %i[new create]
   before_action :set_user, only: %i[show favorites edit update destroy]
-  before_action :ensure_user, only: %i[edit update destroy]
+  before_action :check_user, only: %i[edit update destroy]
+  
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -18,17 +22,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-    @users = User.all
-  end
 
   def show
   end
-
-  def favorites
-  end
-
   def edit
+  end
+  def favorites
   end
 
   def update
@@ -52,7 +51,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-  def ensure_user
+  def check_user
     if @user.id != current_user.id
       flash[:danger] = "編集権限がありません!"
       redirect_back(fallback_location: @user)

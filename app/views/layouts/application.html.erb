@@ -1,25 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PhotoShareApp</title>
+<head>
+    <title>PhotoshareApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content = "width=device-width">
+     <%= favicon_link_tag 'fake_user.png' %>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
  <body>
+
+    
+  <header class='header-menu'>
+    <div class="navbar">
+        <% if logged_in? %>
+              <ul class='row'>
+
+              <li class="col-md-3">
+              <%= button_to posts_path, method: :get, class: "fa fa-home" do %>
+              <%= fa_icon('home', type: :regular, text: "HOME") %>
+              <% end %></li>
+             <li class="col-sm-3">
+              <%= button_to user_path(current_user.id), method: :get, class: "fa fa-user" do %>
+              <%= fa_icon('user', type: :regular,text: "profile") %>
+              <% end %></li>
+            <li class="col-sm-4"> 
+              <%= button_to session_path(current_user.id), method: :delete, class: "fa fa-sign-out" do %>
+              <%= fa_icon('sign-out', type: :regular,text:'logout') %>
+              <% end %>
+              </li>
+               <% else %>
+             <li class="col-sm-2">
+              <%= button_to new_user_path,:method => :get, class: "fa fa-user-plus" do %>
+              <%= fa_icon('sign up', type: :regular,text: "Sign up") %>
+              <% end %>
+             </li>
+             <li class="col-sm-3"> 
+               <%= button_to new_session_path, method: :get, class: "fa fa-sign-in" do %>
+              <%= fa_icon('sign in', type: :regular,text:'login') %>
+              <% end %>
+              </li>
+             </ul>
+          <% end %>
+        </div>
+  </div>
+   </header>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
+ 
     <%= yield %>
   </body>
 </html>

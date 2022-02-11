@@ -1,0 +1,58 @@
+<% provide(:title, "プロファイルを編集") %>
+<div class="user-edit-box">
+  <ul class="user-edit-form">
+    <li><span class="user-edit-block user-edit-active">プロフィールを編集</span></li>
+    <li>
+      <%= link_to "logout", session_path(current_user.id), class: "user-edit-block", method: :delete %>
+    </li>
+    <li>
+      <%= link_to "退会", user_path(current_user.id), class: "user-edit-block", method: :delete, data: {confirm: "本当に退会しますか?"} %>
+    </li>
+  </ul>
+<article class="user-edit-wrapper">
+<%= form_with(model: @user, local: true, class: "edit_form") do |form| %>
+   <% if @user.errors.any? %>
+    <div class="alert alert-danger alert-login">
+     <h3><%= pluralize(@user.errors.count, "error", locale: :en)  %> prohibited this <%= @user.name %> from being saved:</h3>
+     <ul>
+      <% user.errors.full_messages.each do |msg| %>
+        <li><%= msg%></li>
+       <% end %>
+    </ul>
+   </div>
+   <% end %>
+    <table class="edit-user-table">
+    <ul>
+      <li>
+        <%= image_tag(get_user_image_url(@user), class: "edit-user-image-thumb") %>
+         <%= @user.name %></td>
+      </li>
+      <li><%= form.label :name %>
+       <%= form.text_field :name, class: "form-control", placeholder: t("views.users.name"), required: true %> </li>
+
+       <li><%= form.label :email %></li>
+       <li><%= form.email_field :email, class: "form-control", placeholder: t("views.users.email"), required: true %></li>
+
+       <li><%= form.label :image %></li>
+       <li><%= form.file_field :image, class: "form-control", accept: "image/jpg, image/jpeg, image/png, image/gif" %></li>
+     </ul>
+     </table>
+     <tr>
+      <th>現在のプロフィール写真</th>
+      <td>
+        <%= form.hidden_field :image_cache %>
+        <% if @user.image && @user.image.url %>
+          <%= image_tag(@user.image.url, class: "form-user-image") %>
+        <% else %>
+        
+        <% end %>
+      </td>
+     </tr>
+    <tr>
+      <th></th>
+      <td><%= form.submit "変更", class: "btn btn-primary" %></td>
+    </tr>
+  </table>
+ <% end %>
+</article>
+</div>

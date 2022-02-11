@@ -1,13 +1,52 @@
-  <% unless @picture.user_id == current_user.id %>
-   
+  <p id="notice"><%= notice %></p>
+<article class="show-post-wrapper">
+  <div class="show-post-item">
+   <div class="show-post-header">
+     <strong>Image:</strong>
+     <%= @post.image.url %>
+     </div>
+     <div class="blog_wrapper">
+       <div class="tweet_header">
+        <div class="tweet_author-name" style="backgroud-color:pink">
+        <a href=<%= user_path(@post.user.id) %>>
+          <%= image_tag(@post.user.image.url) if @post.user.image && @post.user.image.url %>
+        </a>
+         </div>
+        <div class="tweet_author-nickname">
+          <p>Posted by:  <%= link_to @post.user.name, user_path(@post.user.id) %></p>
+        </div>
+         <div class="tweet_post-time">
+          <%= link_to distance_of_time_in_words(Time.now, @post.created_at)+ ' ago', @post, class: 'timestamp' %>
+         </div>
+         <div class='tweet_edit-button'>
+         <% if @post.user.id == current_user.id %>
+         <div> <%= link_to "編集",edit_post_path  %></div> <span></span>
+         <div> <%= link_to "削除",post_path, method: :delete, data: {confirm: "本当に削除しますか?"} %></div>
+         <% end %>
+        </div>
+       </div>
+        <p class="post-content">
+       <%= image_tag@post.image.url %> 
+        <%= @post.content %><br/>
+     </div>
+   <div class="show-picture-footer">
+    <div class="favorite-wrapper">
+      <% unless @post.user_id == current_user.id %>
      <% if @favorite.present? %>
-     <%= button_to  favorite_path(id: @favorite.id), method: :delete, class: 'favorite-button unfavorite' do %>
-     <%= fa_icon('thumbs-up', type: :regular, text: "favorite") %>
+      <%= button_to  favorite_path(id: @favorite.id), method: :delete, class: 'favorite-button unfavorite' do %>
+      <%= fa_icon('thumbs-up', type: :regular, text: "favorite") %>
     <% end %>
     <% else %>
-      <%= button_to  favorites_path(favorite: {picture_id: @picture.id} ), method: :post, class: "favorite-button" do %>
+      <%= button_to  favorites_path(favorite: {post_id: @post.id} ), method: :post, class: "favorite-button" do %>
       <%= fa_icon('thumbs-up', type: :solid, text: "favorite") %>
     <% end %>
     <% end %>
-       <button class="comment-button"><i class="far fa-comment-alt"></i> Comment</button>
-       <%= link_to "もどる", pictures_path %>
+       <%= link_to "もどる", posts_path %>
+   <% end %>
+  </div>
+ </div>
+</div>
+</div>
+
+</article>
+

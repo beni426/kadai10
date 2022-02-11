@@ -1,12 +1,171 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.post-form-wrapper {
+.post-wrapper {
     width: 100%;
     max-width: 500px;
     margin: auto;
     padding-bottom: 10px;
     background-color: rgb(255,255,255);
     border-radius: 10px;
-    box-shadow: 1px 1px 5px 1px rgb(231, 243, 242);
+    box-shadow: 1px 1px 5px 1px rgb(205, 207, 207);
   }
+  .post-header {
+    height: 42px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding: 0 10px;
+  }
+  .post-header li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 42px;
+    margin: 0;
+    padding: 0;
+  }
+  .post-image-box {
+    width: 100%;
+    background-color: #fff;
+  }
+  .post-image-box img{
+    display: block;
+   
+  }
+    //show用
+    .show-post-wrapper {
+      width: 100%;
+      max-height: 598px;
+      display: flex;
+      margin: 0 auto 16px;
+      background-color: rgb(255,255,255);
+      border: 1px solid rgb(219,219,219);
+      font-size: 14px;
+    }
+    .show-image-wrapper {
+      position: relative;
+      width: calc(100% - 334px);
+      max-width: 598px;
+    }
+    .show-image-wrapper:before {
+      display: block;
+      content: "";
+      padding-top: 100%;
+    }
+    .show-picture-image {
+      position: absolute;
+      display: block;
+      top: 0;
+      width: 100%;
+      height: auto;
+    }
+    .show-post-item {
+      width: 334px;
+      border-left: 1px solid rgb(239,239,239);
+    }
+    .show-post-header {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgb(239,239,239);
+    }
+    .show-post a{
+      width: 60px;
+      padding: 0 12px 0 16px;
+      color: inherit;
+      font-weight: 400;
+      &:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+    .show-post img{
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    button#show-menu-btn {
+      width: 40px;
+      padding: 0 8px;
+      border: none;
+      background-color: inherit;
+      outline: none;
+    }
+
+    .post-content {
+      overflow-wrap: break-word;
+      margin-left: 30px;
+    }
+    .show-post {
+      width: 100%;
+      border-top: 1px solid rgb(239,239,239);
+      padding-top: 45px;
+    }
+    .show-post {
+      display: inline-block;
+      width: 100%;
+    }
+    .show-picture-footer {
+      height: 40px;
+      background-color: rgb(228, 228, 248);
+      border-top: 1px solid rgb(239,239,239);
+      padding: 0 16px;
+      border-bottom: 1px solid rgb(248, 227, 227);;
+    }
+    .favorite-wrapper {
+      margin-top: 4px;
+      padding: 6px 0 8px;
+    }
+    .favorites-count {
+      padding: 6px 0 8px;
+    }
+   
+    .tweet_header{
+      display: flex;
+    }
+    .tweet:hover{
+      background: rgb(228, 228, 248);
+      cursor: pointer;
+    }
+    .tweet_author-name{
+      font-size: 15px;
+      font-weight: 700;
+      color: #14171a;
+      margin-right: 6px;
+    }
+    .tweet_author-nickname{
+      font-size: 15px;
+    }
+    .tweet_post-time{
+      margin-left: 5px;
+      color:#657786
+    }
+    .tweet_edit-button{
+      background-color: rgb(238, 232, 232);
+      margin-left: 10px;
+      display: flex;
+     }
+     .blog_wrapper{
+      border-color: rgb(75, 80, 80);
+      border:1px solid rgb(192, 174, 174);
+      background-color: rgb(228, 228, 248);
+      width: 300px;
+      height: 300px;
+      border-radius: 5px;
+      padding: 10px 10px;
+      margin-left: 10px;
+      display: inline-block;
+    }
+    .btn-original{
+    
+    background-color: #f0f7f6;
+    color: rgb(15, 2, 2);
+    user-select: none;
+    cursor: pointer;
+
+    }

@@ -1,19 +1,15 @@
-<%= form_with(model: @post, url: choose_new_or_edit, local: true) do |form| %>
-    <div class="post-form-header">
-      <ul>
-        <li></li>
-        <%# <li><span class="form-title"><%= form_title %></span></li> %>
-        <li><%= form.submit "投稿", class: "btn-original btn-skyblue", id: "posts-btn" %></li>
-      </ul>
-    </div>
-    <%= form.label :content, class: "sr-only" %>
-    <%= form.text_area :content, class: "form-control", placeholder: "キャプションを入力..." %>
-    <%= form.label :image, class: "sr-only" %>
-    <%= form.file_field :image, class: "form-control", accept: "image/jpg, image/jpeg, image/png, image/gif" %>
-    <%= form.hidden_field :image_cache %>
-    <div class="post-image-box">
-     <%# <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %> %>
-    </div>
+<% provide(:title, "")%>
+<div class="posts-wrapper">
+  <ul class="post-list">
+   <%= link_to '新規投稿', new_post_path ,class:"picture-button" %></li>
+    <% @posts.each do |post| %>
+     <li class="post-list-item">
+       <a href=<%= post_path(post.id)%>>
+        <%= image_tag post.image.url if post.image && post.image.url %>
+        </a>
+    </li>
     <% end %>
- 
+  </ul>
+</div>
+  
 

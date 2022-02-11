@@ -15,10 +15,11 @@ gem 'psych', '~> 3.1'
 gem 'rexml'
 gem "net-smtp"
 gem 'faker'
-
-
-
-
+gem "carrierwave"
+gem "mini_magick"
+gem 'mimemagic', '0.3.7'
+gem 'font_awesome5_rails'
+gem 'omniauth-facebook'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do

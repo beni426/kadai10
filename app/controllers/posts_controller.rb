@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
-  def news
+  def new
     @post = Post.new
   end
   def create
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     else
       if @post.save
         ContactMailer.anounce(@post.user).deliver
-        redirect_to @post, notice: "写真を投稿しました!"
+        redirect_to posts_path, notice: "写真を投稿しました!"
       else
         render :new
       end
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content,:image,:image_cache)
   end
   def set_post
-    @post = post.find(params[:id])
+    @post = Post.find(params[:id])
   end
   def check_user
     if @current_user.nil?
