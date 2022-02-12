@@ -35,3 +35,24 @@
   margin-left: 40%;
 
 }
+.user-image{
+  width: 60px;
+  height: 80px;
+}
+.show-nvr{
+  display: flex;
+}
+.user-edit-box{ 
+  border: 2px solid lightblue;
+  list-style: none;
+  width: 60%;
+  text-align: center;
+  margin-left: 20%;
+}
+.user-edit-form li {
+  list-style: none;
+  text-align: center;
+}
+.form-control{
+  cursor: pointer;
+}

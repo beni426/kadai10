@@ -1,36 +1,36 @@
   <p id="notice"><%= notice %></p>
 <article class="show-post-wrapper">
-  <div class="show-post-item">
-   <div class="show-post-header">
-     <strong>Image:</strong>
-     <%= @post.image.url %>
-     </div>
-     <div class="blog_wrapper">
-       <div class="tweet_header">
-        <div class="tweet_author-name" style="backgroud-color:pink">
-        <a href=<%= user_path(@post.user.id) %>>
-          <%= image_tag(@post.user.image.url) if @post.user.image && @post.user.image.url %>
-        </a>
-         </div>
-        <div class="tweet_author-nickname">
+
+    <div class="show-post-header">
+      <div class="show-main">
+       <div class="item-header">
+       <ul class="row" style="list-style:none">
+        <li class="col-sm-2" > <a href=<%= user_path(@post.user.id) %>>
+          <%= image_tag(@post.user.image.url,class:'user-image') if @post.user.image && @post.user.image.url %></a>
+        </li>
+        <li class="col-sm-2">
           <p>Posted by:  <%= link_to @post.user.name, user_path(@post.user.id) %></p>
-        </div>
-         <div class="tweet_post-time">
+          </li>
+         <li class="col-sm-2">
           <%= link_to distance_of_time_in_words(Time.now, @post.created_at)+ ' ago', @post, class: 'timestamp' %>
-         </div>
-         <div class='tweet_edit-button'>
+         </li>
+         <li class="col-sm-2">
          <% if @post.user.id == current_user.id %>
-         <div> <%= link_to "編集",edit_post_path  %></div> <span></span>
+         <div> <%= link_to "編集",edit_post_path  %></div> 
          <div> <%= link_to "削除",post_path, method: :delete, data: {confirm: "本当に削除しますか?"} %></div>
+         </li>
          <% end %>
+         </ul>
+         </div>
+         </div>
+          <div class = "show-post-content">
+           <div class="new-post-image" >     
+           <%= image_tag(@post.image.url class:'show-post-image') if @post.image && @post.image.url %> 
+          </div>
         </div>
-       </div>
-        <p class="post-content">
-       <%= image_tag@post.image.url %> 
-        <%= @post.content %><br/>
-     </div>
-   <div class="show-picture-footer">
-    <div class="favorite-wrapper">
+       
+    <div class="show-post-footer">
+      <div class="favorite-wrapper">
       <% unless @post.user_id == current_user.id %>
      <% if @favorite.present? %>
       <%= button_to  favorite_path(id: @favorite.id), method: :delete, class: 'favorite-button unfavorite' do %>
@@ -41,12 +41,11 @@
       <%= fa_icon('thumbs-up', type: :solid, text: "favorite") %>
     <% end %>
     <% end %>
-       <%= link_to "もどる", posts_path %>
+       <%= link_to "HOME", posts_path %>
    <% end %>
   </div>
  </div>
 </div>
-</div>
-
 </article>
+
 

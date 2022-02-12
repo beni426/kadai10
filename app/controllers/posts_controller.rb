@@ -26,7 +26,9 @@ class PostsController < ApplicationController
     render :new if @post.invalid?
   end
   def show
+    @posts = Post.where(user_id: @post.user.id).order(created_at: :desc)
     @favorite = current_user.favorites.find_by(post_id: @post.id)
+    @favorites = @post.favorites.order(created_at: :desc)
   end
   def edit
   end

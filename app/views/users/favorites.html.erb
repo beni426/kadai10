@@ -1,4 +1,4 @@
-<% provide(:title, "(@#{@user.name})") %>
+<% provide(:title, "#{@user.name}") %>
 <div class="user-show-wrapper">
 <h2><%= @user.name %>のプロファイル</h2>
    <h1><%= @user.name %></h1>
@@ -15,18 +15,18 @@
     <li>投稿 <span><%= @user.posts ? @user.posts.count : 0%></span>件</li>
     <li><%= link_to "プロフィールを編集",edit_user_path(@user) %></li>
       <li class="favorite-list" id="favorites">
-      <%= link_to " お気に入り一覧" %>
+      <%= link_to " お気に入り一覧", favorites_user_path(user.id) %>
     </li>
     </li>
   </ul>
 </div>  
-
 <p>メールアドレス: <%= @user.email %></p>
 </div>
-
+<article>
 <% if @favorite_list.present? %>
   <% @favorite_list.each do |post| %>
     <%= @post.user.name %>
     <%= image_tag(@post.image.url class:'show-post-image') if @post.image && @post.image.url %> 
     <% end %>
 <% end %>
+</article>

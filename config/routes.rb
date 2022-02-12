@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  resources :users, only: [:new, :create, :show,:edit,:update]
+  resources :users, only: [:show] do 
+    get :favorites, on: :collection 
+  end
+  resources :users, only: [:new, :create, :show,:edit]
   resources :sessions, only: [:new, :create, :destroy]
   resources :favorites, only: [:create, :destroy]
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

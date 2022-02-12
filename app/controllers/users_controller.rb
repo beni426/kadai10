@@ -24,6 +24,9 @@ class UsersController < ApplicationController
 
 
   def show
+    @post=@user.posts
+    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    @Favorite_list= Post.find(favorites)
   end
   def edit
   end

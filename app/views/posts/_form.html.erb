@@ -12,13 +12,11 @@
     <% end %>
     <div class="post-form-header">
       <ul>
-        <li></li>
-    
         <li><%= form.submit "投稿", class: "btn-original", id: "posts-btn" %></li>
       </ul>
     </div>
     <%= form.label :content, class: "sr" %>
-    <%= form.text_area :content, class: "form-control", placeholder: "" %>
+    <%= form.text_area :content, class: "form-control", placeholder: "キャプションを入力..." %>
     <%= form.label :image, class: "sr" %>
     <%= form.file_field :image, class: "form-control", accept: "image/jpg, image/jpeg, image/png, image/gif" %>
     <%= form.hidden_field :image_cache %>

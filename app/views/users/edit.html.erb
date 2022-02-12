@@ -1,12 +1,12 @@
 <% provide(:title, "プロファイルを編集") %>
 <div class="user-edit-box">
-  <ul class="user-edit-form">
-    <li><span class="user-edit-block user-edit-active">プロフィールを編集</span></li>
-    <li>
+  <ul class="user-edit-form row">
+    <li class='col-md-3'><p>プロフィールを編集</p> </li>
+    <li class='col-md-3'>
       <%= link_to "logout", session_path(current_user.id), class: "user-edit-block", method: :delete %>
     </li>
-    <li>
-      <%= link_to "退会", user_path(current_user.id), class: "user-edit-block", method: :delete, data: {confirm: "本当に退会しますか?"} %>
+    <li class='col-md-3'>
+      <%= link_to "退会", user_path(current_user.id), class: "user-edit-block", method: :delete, data: {confirm: "本当に退会してよろしいでしょうか?"} %>
     </li>
   </ul>
 <article class="user-edit-wrapper">
@@ -21,10 +21,10 @@
     </ul>
    </div>
    <% end %>
-    <table class="edit-user-table">
+    <table class="edit-user">
     <ul>
       <li>
-        <%= image_tag(get_user_image_url(@user), class: "edit-user-image-thumb") %>
+        <%= image_tag(get_user_image_url(@user), class: "user-image") %>
          <%= @user.name %></td>
       </li>
       <li><%= form.label :name %>
