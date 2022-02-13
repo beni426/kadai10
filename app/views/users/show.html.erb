@@ -15,7 +15,7 @@
     <li>投稿 <span><%= @user.posts ? @user.posts.count : 0%></span>件</li>
     <li><%= link_to "プロフィールを編集",edit_user_path(@user) %></li>
       <li class="favorite-list" id="favorites">
-      <%= link_to " お気に入り一覧" %>
+      <%= link_to " お気に入り一覧",favorites_users_path(user_id: @user.id) %>
     </li>
     </li>
   </ul>
