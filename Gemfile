@@ -14,6 +14,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'psych', '~> 3.1'
 gem 'rexml'
 gem "net-smtp"
+gem 'net-pop', require: false
+gem 'net-imap', require: false
 gem 'faker'
 gem "carrierwave"
 gem "mini_magick"
