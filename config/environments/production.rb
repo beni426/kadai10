@@ -39,6 +39,8 @@ Rails.application.configure do
   end
 
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { host: 'ancient-bayou-35708.herokuapp.com'}
+ config.action_mailer.delivery_method = :letter_opener_web
 
 
 
