@@ -8,7 +8,7 @@
         <li class="col-sm-2" > <a href=<%= user_path(@post.user.id) %>>
           <%= image_tag(@post.user.image.url,class:'user-image') if @post.user.image && @post.user.image.url %></a>
         </li>
-        <li class="col-sm-2">
+        <li class="col-sm-3">
           <p>Posted by:  <%= link_to @post.user.name, user_path(@post.user.id) %></p>
           </li>
          <li class="col-sm-2">

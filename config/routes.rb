@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show] do 
-    get :favorites, on: :collection 
+    get :favorites, on: :member
   end
   resources :users, only: [:new, :create, :show,:edit]
   resources :sessions, only: [:new, :create, :destroy]

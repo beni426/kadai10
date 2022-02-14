@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: %i[new create]
-  before_action :set_user, only: %i[show favorites edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy favorites]
   before_action :check_user, only: %i[edit update destroy]
   
   def index
@@ -24,13 +24,13 @@ class UsersController < ApplicationController
 
 
   def show
-    @post=@user.posts
-    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @Favorite_list= Post.find(favorites)
   end
   def edit
   end
   def favorites
+   @post=@user.posts
+   favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+   @favorite_list= Post.find(favorites)
   end
 
   def update

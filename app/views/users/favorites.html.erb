@@ -1,9 +1,8 @@
-<% provide(:title, "#{@user.name}") %>
+<% provide(:title, "(@#{current_user.name})")%>
 <div class="user-show-wrapper">
-<h2><%= @user.name %>のプロファイル</h2>
-   <h1><%= @user.name %></h1>
-      <% if @user.id == current_user.id %>
-        <div class="user-show-edit">
+<h2><%= current_user.name %>のお気に入り一覧</h2>
+  <% if @user.id == current_user.id %>
+    <div class="user-show-edit">
         <%= image_tag(get_user_image_url(@user),class:'user-image') %>
         </div>
       <% end %>
@@ -12,20 +11,17 @@
     <li class="show-nav-list" id="posts">
      <%= link_to "ブログを新規作成", posts_path %>
     </li>
-    <li>投稿 <span><%= @user.posts ? @user.posts.count : 0%></span>件</li>
-    <li><%= link_to "プロフィールを編集",edit_user_path(@user) %></li>
-     
-    </li>
-    </li>
+
   </ul>
 </div>  
-<p>メールアドレス: <%= @user.email %></p>
 </div>
-<article>
+<ul>
+
 <% if @favorite_list.present? %>
-  <% @favorite_list.each do |post| %>
-    <%= @post.user.name %>
-    <%= image_tag(@post.image.url class:'show-post-image') if @post.image && @post.image.url %> 
+  <% @favorite_list.each do |favorite| %>
+    <%= favorite.user.name %>
+    <%= image_tag favorite.image.url %> 
     <% end %>
+  
 <% end %>
-</article>
+</ul>

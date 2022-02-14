@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   end
   def show
     @posts = Post.where(user_id: @post.user.id).order(created_at: :desc)
-  
+
   end
   def edit
   end
