@@ -20,14 +20,12 @@ class PostsController < ApplicationController
       end
     end
   end
-
   def confirm
     @post = current_user.posts.build(post_params)
     render :new if @post.invalid?
   end
   def show
     @posts = Post.where(user_id: @post.user.id).order(created_at: :desc)
-
   end
   def edit
   end
@@ -38,14 +36,10 @@ class PostsController < ApplicationController
     render :edit
     end
   end
-  
   def destroy
     @post.destroy
     redirect_to posts_path, notice:"ブログを削除しました！"
   end
-
-
-
   private
   def post_params
     params.require(:post).permit(:content,:image,:image_cache)
