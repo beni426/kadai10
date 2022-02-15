@@ -4,6 +4,7 @@
   <% if @user.id == current_user.id %>
     <div class="user-show-edit">
         <%= image_tag(get_user_image_url(@user),class:'user-image') %>
+        <li><%= link_to "プロフィールを編集",edit_user_path(@user) %></li>
         </div>
       <% end %>
  <div class="show-nav">
