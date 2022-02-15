@@ -23,6 +23,7 @@ gem 'mimemagic', '0.3.7'
 gem 'font_awesome5_rails'
 gem 'omniauth-facebook'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'letter_opener_web'
 
 group :development, :test do
  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -33,7 +34,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'letter_opener_web'
+ 
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
   gem 'spring'
