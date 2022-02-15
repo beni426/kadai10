@@ -2,15 +2,12 @@ class UsersController < ApplicationController
   skip_before_action :login_required, only: %i[new create]
   before_action :set_user, only: %i[show edit update destroy favorites]
   before_action :check_user, only: %i[edit update destroy]
-  
   def index
     @users = User.all
   end
-
   def new
     @user = User.new
   end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -21,8 +18,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-
   def show
   end
   def edit
@@ -32,7 +27,6 @@ class UsersController < ApplicationController
    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
    @favorite_list= Post.find(favorites)
   end
-
   def update
     if @user.update(user_params)
       redirect_to @user, notice: "ユーザー情報を編集しました!"
@@ -40,7 +34,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
   def destroy
     @user.destroy
     flash[:danger] = "退会しました!"

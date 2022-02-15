@@ -10,7 +10,7 @@
     </li>
   </ul>
 <article class="user-edit-wrapper">
-<%= form_with(model: @user, local: true, class: "edit_form") do |form| %>
+<%= form_with(model: @user,url: user_path, local: true, class: "edit_form") do |form| %>
    <% if @user.errors.any? %>
     <div class="alert alert-danger alert-login">
      <h3><%= pluralize(@user.errors.count, "error", locale: :en)  %> prohibited this <%= @user.name %> from being saved:</h3>

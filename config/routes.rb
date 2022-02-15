@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do 
     get :favorites, on: :member
   end
-  resources :users, only: [:new, :create, :show,:edit]
+  resources :users, only: [:new, :create, :show,:edit,:update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :favorites, only: [:create, :destroy]
   mount LetterOpenerWeb::Engine, at: '/letter_opener'
