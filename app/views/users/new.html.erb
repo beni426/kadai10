@@ -15,18 +15,18 @@
     <h1>Sign up</h1>
     <%= image_tag(@user.image.url, class: "user-image") if @user.image && @user.image.url %>
 
-    <%= form.label :name, class: "sr" %>
-    <%= form.text_field :name, class: "form-operation judge-active", placeholder: 'your name', required: true %>
-    <%= form.label :email, class: "sr" %>
-   <%= form.email_field :email, class: "form-operation judge-active", placeholder: 'your email', required: true, autofocus: true %>
-     <%= form.label :image, class: "sr" %>
-    <%= form.file_field :image, class: "form-operation", accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+    <%= form.label :name, class: "sri" %>
+    <%= form.text_field :name, class: "form-control", placeholder: 'your name', required: true %>
+    <%= form.label :email, class: "sri" %>
+   <%= form.email_field :email, class: "form-control", placeholder: 'your email', required: true, autofocus: true %>
+     <%= form.label :image, class: "sri" %>
+    <%= form.file_field :image, class: "form-control", accept: "image/jpg, image/jpeg, image/png, image/gif" %>
     <%= form.hidden_field :image_cache %>
-    <%= form.label :password, class: "sr" %>
-    <%= form.password_field :password, class: "form-operation judge-active", placeholder: 'your password', required: true, minlength: 6 %>
-    <%= form.label :password, class: "sr" %>
-    <%= form.password_field :password_confirmation, class: "form-operation judge-active", placeholder: 'your password confirmation', required: true %>
-    <%= form.submit "登録する", class: "btn btn-primary", id: "active-btn" %>
+    <%= form.label :password, class: "sri" %>
+    <%= form.password_field :password, class: "form-control", placeholder: 'your password', required: true, minlength: 6 %>
+    <%= form.label :password, class: "sri" %>
+    <%= form.password_field :password_confirmation, class: "form-controle", placeholder: 'your password confirmation', required: true %>
+    <%= form.submit "登録する", class: "btn-primary", id: "active-btn" %>
      <p><%=link_to "ログインする", new_session_path %></p>
   <% end %>
   <div class="enter-login-wrapper">

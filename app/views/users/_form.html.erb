@@ -6,17 +6,17 @@
     <%= render partial: "error_messages", locals: {user: user} %>
     <h2 class="login-form-subtitle">登録して友達の写真や動画をチェックしよう</h2>
     <%= image_tag(user.image.url, class: "form-user-image") if user.image && user.image.url %>
-    <%= form.label :email, class: "sr-only" %>
-    <%= form.email_field :email, class: "form-control judge-active", placeholder: t("views.users.email"), required: true, autofocus: true %>
-    <%= form.text_field :name, class: "form-control judge-active", placeholder: t("views.users.name"), required: true %>
-    <%= form.label :image, class: "sr-only" %>
+    <%= form.label :email, class: "sri" %>
+    <%= form.email_field :email, class: "form-control", placeholder: t("views.users.email"), required: true, autofocus: true %>
+    <%= form.text_field :name, class: "form-control", placeholder: t("views.users.name"), required: true %>
+    <%= form.label :image, class: "sri" %>
     <%= form.file_field :image, class: "form-control", accept: "image/jpg, image/jpeg, image/png, image/gif" %>
     <%= form.hidden_field :image_cache %>
-    <%= form.label :password, class: "sr-only" %>
-    <%= form.password_field :password, class: "form-control judge-active", placeholder: t("views.users.password"), required: true, minlength: 6 %>
-    <%= form.label :password, class: "sr-only" %>
-    <%= form.password_field :password_confirmation, class: "form-control judge-active", placeholder: t("views.users.password_confirmation"), required: true %>
-    <%= form.submit "登録する", class: "btn btn-primary", id: "active-btn" %>
-    <p class="explanation-rule">登録することで、本規約、データに関するポリシー、Cookieポリシーに同意するものとします。</p>
+    <%= form.label :password, class: "sri" %>
+    <%= form.password_field :password, class: "form-control", placeholder: t("views.users.password"), required: true, minlength: 6 %>
+    <%= form.label :password, class: "sri" %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: t("views.users.password_confirmation"), required: true %>
+    <%= form.submit "登録する", class: "btn-primary", id: "active-btn" %>
+    <p class="explanation-rule">登録することで、本規約、データに関するポリシーに同意するものとします。</p>
   <% end %>
 </div>
