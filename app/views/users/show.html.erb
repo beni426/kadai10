@@ -14,8 +14,10 @@
      <%= link_to "ブログを新規作成", posts_path %>
     </li>
     <li>投稿 <span><%= @user.posts ? @user.posts.count : 0%></span>件</li>
+      <% if @user.id == current_user.id %>
+     <li><%= link_to "プロフィールを編集",edit_user_path(@user) %></li>
+     <% end %>
     
-    <li><%= link_to "プロフィールを編集",edit_user_path(@user) %></li>
    
       <li class="favorite-list" id="favorites">
       <%= link_to " お気に入り一覧",favorites_user_path(@user.id) %>
