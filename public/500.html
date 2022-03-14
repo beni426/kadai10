@@ -5,13 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .error {
-    padding-top: 16%
-  }
+    border: 1px solid rgb(165, 163, 163);
+    width: 50%;
+    margin-left: 25%;
+    height: 600px;
+   }
   p{
-    text-align: center;
+  text-align: center;
+  font-size: large;
+  background-color: rgb(97, 2, 2);
+  color: bisque;
+   height: 40px;
   }
   img{
-    display: block;
+   display: block;
     margin: 0 auto;
   }
   </style>
@@ -20,7 +27,8 @@
 <body>
   <!-- This file lives in public/500.html -->
   <div class="error">
-    <img src="/500.png">
+  <p>Internal Server Error (500)</p>
+    <img src="/owabi.png" width="450" height="500">
     <p>Internal Server Error</p>
   </div>
 </body>

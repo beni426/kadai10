@@ -24,6 +24,7 @@ gem 'font_awesome5_rails'
 gem 'omniauth-facebook'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'letter_opener_web'
+gem 'fog-aws'
 
 group :development, :test do
  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

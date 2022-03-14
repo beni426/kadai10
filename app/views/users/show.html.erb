@@ -29,6 +29,12 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 </div>
+<% count = 0 %>
+<% @login_user_posts.each do |post| %>
+<% count += post.favorites.count if 
+post.favorites.present? %>
+<% end %>
+<p>お気に入りされた合計数: <%= count %></p>
 
 <% if @favorite_list.present? %>
   <% @favorite_list.each do |post| %>
